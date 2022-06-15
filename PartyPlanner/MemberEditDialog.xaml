@@ -1,0 +1,40 @@
+﻿<Window x:Class="PartyPlanner.MemberEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PartyPlanner"
+        mc:Ignorable="d"
+        Title="メンバー編集" SizeToContent="Height" Width="400" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <DockPanel Margin="20">
+            <TextBlock Text="名前：" DockPanel.Dock="Left"/>
+            <TextBox Name="NameTextBox"/>
+        </DockPanel>
+        <GroupBox Header="役職（上が優先）">
+            <DockPanel>
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+                    <Button Content="追加" Name="AddButton" Click="AddButton_Click"/>
+                    <Button Content="削除" Name="RemoveButton" Click="RemoveButton_Click"/>
+                </StackPanel>
+                <ListBox Name="RoleListBox">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="OK" Padding="20,10" Margin="20,10" MinWidth="100" IsDefault="True" Name="OkButton" Click="OkButton_Click"/>
+            <Button Content="Cancel" Padding="20,10" Margin="20,10" MinWidth="100" IsCancel="True" Name="CancelButton" Click="CancelButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,71 @@
+﻿<Window x:Class="PartyPlanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PartyPlanner"
+        mc:Ignorable="d"
+        Title="PartyPlanner" Height="768" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <TextBox Name="ResultTextBox" AcceptsReturn="True" MinHeight="200" Margin="5" VerticalScrollBarVisibility="Visible"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="実行" Name="RunButton" Click="RunButton_Click" MinWidth="100"/>
+                <Button Content="読込" Name="LoadButton" Click="LoadButton_Click"/>
+                <Button Content="保存" Name="SaveButton" Click="SaveButton_Click"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel MinHeight="200">
+            <GroupBox Header="役職" DockPanel.Dock="Left">
+                <DockPanel>
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+                        <Button Content="追加" Name="RoleAddButton" Click="RoleAddButton_Click"/>
+                        <Button Content="削除" Name="RoleRemoveButton" Click="RoleRemoveButton_Click"/>
+                    </StackPanel>
+                    <DataGrid Name="RoleDataGrid" MinWidth="100" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="役職名" Binding="{Binding Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+            <GroupBox Header="役職選択" DockPanel.Dock="Right">
+                <DockPanel>
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+                        <Button Content="追加" Name="RoleSelectAddButton" Click="RoleSelectAddButton_Click"/>
+                        <Button Content="削除" Name="RoleSelectRemoveButton" Click="RoleSelectRemoveButton_Click"/>
+                    </StackPanel>
+                    <DataGrid Name="SelectedRolesDataGrid" MinWidth="100" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="役職名" Binding="{Binding Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+            <GroupBox Header="メンバー一覧">
+                <DockPanel>
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+                        <Button Content="追加" Name="MemberAddButton" Click="MemberAddButton_Click"/>
+                        <Button Content="編集" Name="MemberEditButton" Click="MemberEditButton_Click"/>
+                        <Button Content="削除" Name="MemberRemoveButton" Click="MemberRemoveButton_Click"/>
+                    </StackPanel>
+                    <DataGrid Name="MemberDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Header="選択" Binding="{Binding IsChecked}"/>
+                            <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="役職" Binding="{Binding RolesString}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>
+    </DockPanel>
+</Window>

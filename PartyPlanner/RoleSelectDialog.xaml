@@ -1,0 +1,22 @@
+﻿<Window x:Class="PartyPlanner.RoleSelectDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PartyPlanner"
+        mc:Ignorable="d"
+        Title="役職選択" Height="300" Width="300">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+            <Button Content="OK" Padding="20,10" Margin="20,10" MinWidth="100" IsDefault="True" Name="OkButton" Click="OkButton_Click"/>
+            <Button Content="Cancel" Padding="20,10" Margin="20,10" MinWidth="100" IsCancel="True" Name="CancelButton" Click="CancelButton_Click"/>
+        </StackPanel>
+        <ListBox Name="RoleListBox" Margin="10,10,10,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Window>
