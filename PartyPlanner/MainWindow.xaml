@@ -57,11 +57,11 @@
                         <Button Content="編集" Name="MemberEditButton" Click="MemberEditButton_Click"/>
                         <Button Content="削除" Name="MemberRemoveButton" Click="MemberRemoveButton_Click"/>
                     </StackPanel>
-                    <DataGrid Name="MemberDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid Name="MemberDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="選択" Binding="{Binding IsChecked}"/>
-                            <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="役職" Binding="{Binding RolesString}" Width="*"/>
+                            <DataGridTextColumn Header="名前" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="役職" Binding="{Binding RolesString}" Width="*" IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
