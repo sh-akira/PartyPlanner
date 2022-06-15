@@ -50,6 +50,7 @@ namespace PartyPlanner
             if (CurrentMember == null)
             {
                 CurrentMember = new Member();
+                CurrentMember.IsChecked = true;
                 NewRoles = new ObservableCollection<Role>();
             }
             else
